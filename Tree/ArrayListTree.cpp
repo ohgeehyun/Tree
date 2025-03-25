@@ -89,12 +89,14 @@ bool ArrayListTree::delete_element(int32 num)
 bool ArrayListTree::add_recursive(int32_t index, int32_t num)
 {
 	if (index >= _nodes.size()) {
-		// 트리 배열 크기를 늘려서 index 위치를 유지
 		_nodes.resize(index + 1, std::nullopt);
+	}
+
+	// 현재 위치가 비어있다면 바로 삽입
+	if (!_nodes[index].has_value()) {
 		_nodes[index] = num;
 		return true;
 	}
-
 
 	if (num < _nodes[index]) {
 		int32 leftIndex = left_child(index);
