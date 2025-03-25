@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "pch.h"
-
+#include "ArrayListTree.h"
+#include "LinkedListTree.h"
 
 /*
 배열 기반 리스트와 링크드 리스트 기반 트리
@@ -16,12 +17,45 @@
 
 */ 
 
-
-
-
 int main()
 {
-    std::cout << "Hello World!\n";
+    
+    ArrayListTree* arraytree = new ArrayListTree();
+
+    arraytree->add_element(5);
+    arraytree->add_element(10);
+    arraytree->add_element(20);
+    arraytree->add_element(9);
+    arraytree->add_element(13);
+    arraytree->add_element(3);
+
+    for (int32 i = 0; i < arraytree->GetTree().size(); i++)
+    {
+        if (arraytree->GetTree()[i].has_value())
+            cout << arraytree->GetTree()[i].value() << endl;
+        else
+            cout << "empty" <<endl;
+    }
+
+    cout << arraytree->get_height() << endl;
+    cout << arraytree->get_min_value() << endl;
+    cout << arraytree->get_max_value() << endl;
+
+    cout << "-------------------------------" << endl;
+
+    arraytree->delete_element(9);
+    arraytree->delete_element(100);
+
+    for (int32 i = 0; i < arraytree->GetTree().size(); i++)
+    {
+        if (arraytree->GetTree()[i].has_value())
+            cout << arraytree->GetTree()[i].value() << endl;
+        else
+            cout << "empty" << endl;
+    }
+    cout << arraytree->get_height() << endl;
+    cout << arraytree->get_min_value() << endl;
+    cout << arraytree->get_max_value() << endl;
 
     system("pause");
 }
